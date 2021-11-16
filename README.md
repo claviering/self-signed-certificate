@@ -26,3 +26,24 @@ system inport root certificate
 
 `$ ./make.sh`
 
+## Warining
+
+iOS 13 和 macOS 10.15 中的可信证书应满足的要求
+
+了解 iOS 13 和 macOS 10.15 中的 TLS 服务器证书应满足的新安全要求。
+
+在 iOS 13 和 macOS 10.15 中，所有 TLS 服务器证书都必须符合这些新的安全要求：
+
+- 使用 RSA 密钥的 TLS 服务器证书和签发证书的 CA 必须使用长度大于或等于 2048 位的密钥。TLS 不再信任所用 RSA 密钥长度小于 2048 位的证书。
+- TLS 服务器证书和签发证书的 CA 必须在签名算法中使用 SHA-2 系列中的哈希算法。TLS 不再信任 SHA-1 签名的证书。
+- TLS 服务器证书必须在证书的“使用者备用名称”扩展中显示服务器的 DNS 名称。证书的 CommonName 中的 DNS 名称不再受信任。
+此外，所有在 2019 年 7 月 1 日后签发的 TLS 服务器证书（如证书的 NotBefore 字段中所示）必须遵循以下准则：
+
+- TLS 服务器证书必须包含一个内含 id-kp-serverAuth OID 的 ExtendedKeyUsage (EKU) 扩展。
+- TLS 服务器证书的有效期必须为 825 天或更短（如证书的 NotBefore 和 NotAfter 字段中所示）。
+违反上述新要求的 TLS 服务器连接将失败，并可能导致网络出现故障、应用无法运行，以及在 iOS 13 和 macOS 10.15 的 Safari 浏览器中无法载入网站。
+
+发布日期： 2019 年 06 月 28 日
+
+https://support.apple.com/zh-cn/HT210176
+

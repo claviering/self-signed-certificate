@@ -12,6 +12,6 @@ openssl ecparam -name secp384r1 -genkey -out root.key
 openssl req -x509 -new -config root.conf -key root.key -sha384 -days 3650 -out root.crt
 openssl ecparam -genkey -name secp384r1 -out server.key
 openssl req -new -config server.conf -key server.key -out server.csr -sha384
-openssl x509 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -days 3650 -sha384 -extfile v3.ext
+openssl x509 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -days 365 -sha384 -extfile v3.ext
 
 echo 'done ...'
