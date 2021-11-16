@@ -8,6 +8,8 @@
 
 `openssl x509 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -days 3650 -sha384 -extfile v3.ext`
 
+系统导入根证书
+
 # using openssl self-signed certificate
 
 change `root.conf` to make youself root certificate
@@ -17,6 +19,8 @@ change `server.conf` to make youself server certificate
 only signed using root certificate
 
 `openssl x509 -req -in server.csr -CA root.crt -CAkey root.key -CAcreateserial -out server.crt -days 3650 -sha384 -extfile v3.ext`
+
+system inport root certificate
 
 ## Usage
 
