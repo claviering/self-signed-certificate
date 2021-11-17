@@ -68,3 +68,7 @@ iOS 13 和 macOS 10.15 中的可信证书应满足的要求
 
 https://support.apple.com/zh-cn/HT210176
 
+
+## License
+
+[MIT Licensed](LICENSE)
