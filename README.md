@@ -26,7 +26,28 @@ system inport root certificate
 
 `$ ./make.sh`
 
-## Warining
+## Warning
+
+Requirements for trusted certificates in iOS 13 and macOS 10.15
+
+Learn about new security requirements for TLS server certificates in iOS 13 and macOS 10.15.
+
+All TLS server certificates must comply with these new security requirements in iOS 13 and macOS 10.15:
+
+- TLS server certificates and issuing CAs using RSA keys must use key sizes greater than or equal to 2048 bits. Certificates using RSA key sizes smaller than 2048 bits are no longer trusted for TLS.
+- TLS server certificates and issuing CAs must use a hash algorithm from the SHA-2 family in the signature algorithm. SHA-1 signed certificates are no longer trusted for TLS.
+- TLS server certificates must present the DNS name of the server in the Subject Alternative Name extension of the certificate. DNS names in the CommonName of a certificate are no longer trusted.
+Additionally, all TLS server certificates issued after July 1, 2019 (as indicated in the NotBefore field of the certificate) must follow these guidelines:
+
+- TLS server certificates must contain an ExtendedKeyUsage (EKU) extension containing the id-kp-serverAuth OID.
+- TLS server certificates must have a validity period of 825 days or fewer (as expressed in the NotBefore and NotAfter fields of the certificate).
+Connections to TLS servers violating these new requirements will fail and may cause network failures, apps to fail, and websites to not load in Safari in iOS 13 and macOS 10.15.
+
+Published Date: November 03, 2019
+
+https://support.apple.com/en-us/HT210176
+
+## 注意
 
 iOS 13 和 macOS 10.15 中的可信证书应满足的要求
 
