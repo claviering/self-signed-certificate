@@ -68,6 +68,11 @@ iOS 13 和 macOS 10.15 中的可信证书应满足的要求
 
 https://support.apple.com/zh-cn/HT210176
 
+## 通配符SSL证书
+
+通配符SSL证书又称为泛域名证书，它与其他域名SSL证书最大的不同是通配符证书可以保护一个主域名及其下一级所有子域名
+
+*.example.com 可以保护 www.example.com 和 mail.example.com 两个域名。但不能保护 a.mail.example.com 域名，因为这不属于下一级域名
 
 ## License
 
